@@ -7,6 +7,7 @@ import 'package:holo_challenge/widgets/image/multi_source_image.dart';
 class CustomIconButton extends StatelessWidget {
   final ButtonIconSize? buttonIconSize;
   final int? count;
+  final Color? borderColor;
   final Color? fillColor;
   final Color? counterFillColor;
   final String? icon;
@@ -25,6 +26,7 @@ class CustomIconButton extends StatelessWidget {
     this.count,
     this.onTap,
     this.iconColor,
+    this.borderColor,
     this.fillColor,
     this.counterFillColor,
     this.isSelected = false,
@@ -45,6 +47,7 @@ class CustomIconButton extends StatelessWidget {
       count: count,
       iconColor: iconColor,
       fillColor: fillColor,
+      borderColor: borderColor,
       counterFillColor: counterFillColor,
       isSelected: isSelected,
       isCircular: isCircular,
@@ -60,6 +63,7 @@ class CustomIconButton extends StatelessWidget {
     Color? iconColor,
     Color? fillColor,
     Color? counterFillColor,
+    Color? borderColor,
     double size = UIHelper.ctaButtonSize,
     int? count,
     bool isSelected = false,
@@ -77,7 +81,7 @@ class CustomIconButton extends StatelessWidget {
             : isSelected
             ? ThemePalette.accentColor
             : ThemePalette.cellBackgroundColor);
-    Color borderColor = ThemePalette.borderColor;
+    Color _borderColor = borderColor ?? ThemePalette.borderColor;
     if (icon != null && icon.isNotEmpty) {
       return Stack(
         clipBehavior: Clip.none,
@@ -101,7 +105,7 @@ class CustomIconButton extends StatelessWidget {
                 ),
                 side:
                     showBorder
-                        ? BorderSide(color: borderColor)
+                        ? BorderSide(color: _borderColor)
                         : BorderSide.none,
               ),
             ),

@@ -294,8 +294,6 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
             ThemePalette.accentColor,
             FontType.bold,
           ),
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
         ),
       );
     }
