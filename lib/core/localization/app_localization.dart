@@ -24,6 +24,10 @@ class AppLocalizations {
     return _localization;
   }
 
+  String get addToCart {
+    return Intl.message('Add To Cart', name: 'addToCart');
+  }
+
   String get dark {
     return Intl.message('Dark', name: 'dark');
   }

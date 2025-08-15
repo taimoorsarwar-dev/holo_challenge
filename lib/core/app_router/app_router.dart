@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:holo_challenge/modules/products/details/product_details_screen.dart';
 import 'package:holo_challenge/modules/products/list/products_screen.dart';
 import 'package:holo_challenge/utils/app_logger.dart';
 
@@ -12,6 +13,10 @@ class AppRouter {
         case RouteNames.products:
           final args = settings.arguments as ProductsScreenParams?;
           return _materialPageRoute(ProductsScreen(params: args));
+
+        case RouteNames.productDetails:
+          final args = settings.arguments as ProductDetailsScreenParams?;
+          return _materialPageRoute(ProductDetailsScreen(params: args));
 
         default:
           return _noRouteWidget(path);
