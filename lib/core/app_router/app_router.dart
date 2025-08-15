@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:holo_challenge/modules/products/list/products_screen.dart';
 import 'package:holo_challenge/utils/app_logger.dart';
+
+import 'route_names.dart';
 
 class AppRouter {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final String? path = settings.name;
     try {
       switch (path) {
+        case RouteNames.products:
+          final args = settings.arguments as ProductsScreenParams?;
+          return _materialPageRoute(ProductsScreen(params: args));
+
         default:
           return _noRouteWidget(path);
       }

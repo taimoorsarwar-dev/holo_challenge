@@ -165,10 +165,10 @@ class _ToastWidget extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         textAlign: TextAlign.start,
         maxLines: 2,
-        style: AppTextStyle.getMedium4TextStyle(
+        style: AppTextStyle.getLargeTextStyle(
           false, // This parameter seems unused, consider removing it
           config.textColor ?? ThemePalette.cellBackgroundColor,
-          FontType.Medium,
+          FontType.medium,
         ),
       ),
     );
