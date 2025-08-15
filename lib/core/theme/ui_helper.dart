@@ -8,7 +8,7 @@ class UIHelper {
   static const double buttonHeight = 60;
   static const double outlineButtonHeight = 46;
   static const double chipButtonHeight = 36;
-  static const double tagItemHeight = 32.0;
+  static const double tagItemHeight = 30.0;
   static const double ctaButtonSize = 48;
   static const double imageHeight = 200;
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:holo_challenge/core/theme/app_text_styles.dart';
 import 'package:holo_challenge/core/theme/theme_palette.dart';
 import 'package:holo_challenge/core/theme/ui_helper.dart';
+import 'package:holo_challenge/modules/base/base_state.dart';
 import 'package:holo_challenge/modules/cart/add_to_cart_button.dart';
 import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
@@ -86,19 +87,27 @@ class ProductItemCard extends StatelessWidget {
   }
 
   Widget _getImageWidget({double? size = 75}) {
-    return Container(
-      // width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: ThemePalette.dividerColor,
-        // borderRadius: UIHelper.cardBorderRadiusAll,
-      ),
-      padding: EdgeInsets.all(UIHelper.extraSmallPadding),
-      child: CustomCachedNetworkImage(
-        productModel?.image ?? "",
-        bgColor: ThemePalette.backgroundColor,
-        boxFit: BoxFit.contain,
-      ),
+    return Stack(
+      children: [
+        Container(
+          // width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: ThemePalette.dividerColor,
+            // borderRadius: UIHelper.cardBorderRadiusAll,
+          ),
+          padding: EdgeInsets.all(UIHelper.extraSmallPadding),
+          child: CustomCachedNetworkImage(
+            productModel?.image ?? "",
+            bgColor: ThemePalette.backgroundColor,
+            boxFit: BoxFit.contain,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(UIHelper.extraSmallPadding),
+          child: _getCategoryWidget(model: productModel),
+        ),
+      ],
     );
   }
 
@@ -133,6 +142,21 @@ class ProductItemCard extends StatelessWidget {
         ),
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
+      );
+    }
+
+    return const SizedBox();
+  }
+
+  Widget _getCategoryWidget({required ProductModel? model}) {
+    String? category = model?.category?.trim();
+    if (category != null && category.isNotEmpty) {
+      return Container(
+        margin: EdgeInsets.only(bottom: UIHelper.mediumPadding),
+        child: UiUtils.getChipItemCell(
+          label: category.capitalizeFirstOfEach,
+          bgColor: ThemePalette.backgroundColor,
+        ),
       );
     }
 
