@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:holo_challenge/widgets/image/multi_source_image.dart';
 import 'package:holo_challenge/core/theme/ui_theme.dart';
+import 'package:holo_challenge/widgets/image/multi_source_image.dart';
 
 class PrimaryButton extends StatelessWidget {
   final Color? backgroundColor;
