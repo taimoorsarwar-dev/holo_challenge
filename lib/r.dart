@@ -1,4 +1,6 @@
 class R {
+  /// ![](http://127.0.0.1:7738/assets/images/icons/add.png)
+  static final String assetsImagesIconsAdd = 'assets/images/icons/add.png';
   /// ![](http://127.0.0.1:7738/assets/images/icons/tick.png)
   static final String assetsImagesIconsTick = 'assets/images/icons/tick.png';
   /// ![](http://127.0.0.1:7738/assets/images/icons/gallery.png)
