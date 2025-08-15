@@ -4,6 +4,7 @@ import 'package:holo_challenge/core/di/app_locator.dart';
 import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/modules/base/base_bloc.dart';
 import 'package:holo_challenge/modules/base/base_state.dart';
+import 'package:holo_challenge/modules/cart/add_to_cart_button.dart';
 import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/network/cart/cart_model.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
@@ -142,7 +143,6 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _getImages(productModel: productModel),
-          _getDetailsWidget(productModel: productModel),
           _getDetailsWidget(productModel: productModel),
         ],
       ),
@@ -346,8 +346,12 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
   }
 
   Widget _getAddToCartButton({required ProductModel? model}) {
-    if (model == null) return const SizedBox();
+    if (model != null) {
+      return AddToCartButton(cartBloc: _cartBloc, model: model);
+    }
 
+    return const SizedBox();
+    if (model == null) return const SizedBox();
     return StreamBuilder<CartModel?>(
       stream: _cartBloc?.cartStream,
       builder: (context, snapshot) {

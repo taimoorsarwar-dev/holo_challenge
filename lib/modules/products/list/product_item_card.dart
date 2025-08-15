@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:holo_challenge/core/theme/app_text_styles.dart';
 import 'package:holo_challenge/core/theme/theme_palette.dart';
 import 'package:holo_challenge/core/theme/ui_helper.dart';
+import 'package:holo_challenge/modules/cart/add_to_cart_button.dart';
+import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
 import 'package:holo_challenge/utils/ui_util.dart';
 import 'package:holo_challenge/widgets/image/custom_cached_network_image.dart';
@@ -9,7 +11,13 @@ import 'package:holo_challenge/widgets/image/custom_cached_network_image.dart';
 class ProductItemCard extends StatelessWidget {
   final ProductModel? productModel;
   final VoidCallback? onTap;
-  const ProductItemCard({super.key, this.productModel, this.onTap});
+  final CartBloc? cartBloc;
+  const ProductItemCard({
+    super.key,
+    this.productModel,
+    this.onTap,
+    this.cartBloc,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +52,12 @@ class ProductItemCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text('\$${productModel?.price}'),
+                      if (cartBloc != null)
+                        AddToCartButton(
+                          cartBloc: cartBloc,
+                          model: productModel!,
+                          showCompatButton: true,
+                        ),
                     ],
                   ),
                 ),

@@ -31,6 +31,7 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends BaseState<ProductsScreen>
     with TickerProviderStateMixin {
   ProductBloc? _productBloc;
+  CartBloc? _cartBloc;
 
   @override
   void initState() {
@@ -45,6 +46,7 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
 
   bool createBloc() {
     _productBloc ??= ProductBloc(title: "Products");
+    _cartBloc ??= locator<CartBloc>();
     return false;
   }
 
@@ -151,6 +153,7 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
     if (model != null) {
       return ProductItemCard(
         productModel: model,
+        cartBloc: _cartBloc,
         onTap: () {
           _productBloc?.navigateToProductDetailsScreen(productModel: model);
         },
