@@ -24,6 +24,21 @@ class AppLocalizations {
     return _localization;
   }
 
+  String get emptyCartTitle {
+    return Intl.message("Oh no, it's empty in here!", name: 'emptyCartTitle');
+  }
+
+  String get emptyCartText {
+    return Intl.message(
+      "Let's fill it up with something special",
+      name: 'emptyCartText',
+    );
+  }
+
+  String get startShopping {
+    return Intl.message('Start Shopping', name: 'startShopping');
+  }
+
   String get checkoutNow {
     return Intl.message('Checkout now', name: 'checkoutNow');
   }

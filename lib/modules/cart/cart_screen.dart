@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:holo_challenge/core/app_router/navigator_service.dart';
 import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/core/theme/ui_theme.dart';
 import 'package:holo_challenge/modules/base/base_state.dart';
@@ -7,8 +8,8 @@ import 'package:holo_challenge/network/cart/cart_model.dart';
 import 'package:holo_challenge/r.dart';
 import 'package:holo_challenge/utils/currency_utils.dart';
 import 'package:holo_challenge/utils/ui_util.dart';
-import 'package:holo_challenge/widgets/buttons/custom_icon_button.dart';
 import 'package:holo_challenge/widgets/buttons/primary_button.dart';
+import 'package:lottie/lottie.dart';
 
 import 'cart_product_item_card.dart';
 
@@ -74,14 +75,43 @@ class _CartScreenState extends BaseState<CartScreen>
             titleStream: _cartBloc?.titleStream,
             isBackNeeded: widget.params?.isLaunchedInTab == false,
             suffixWidgets: [
-              CustomIconButton(
-                icon: R.assetsImagesIconsDelete,
-                isCircular: true,
-                onTap: () {
-                  _cartBloc?.showConfirmationDialog();
+              StreamBuilder(
+                stream: _cartBloc?.totalCount,
+                builder: (context, asyncSnapshot) {
+                  int count = 0;
+                  if (asyncSnapshot.hasData && asyncSnapshot.data is int) {
+                    count = asyncSnapshot.data as int;
+                  }
+                  if (count > 0) {
+                    return MaterialButton(
+                      onPressed: () {
+                        _cartBloc?.showConfirmationDialog();
+                      },
+                      padding: EdgeInsets.zero,
+                      minWidth: 0,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      child: Text(
+                        AppLocalizations.getLocalization().clearCart,
+                        style: AppTextStyle.getMediumTextStyle(
+                          false,
+                          ThemePalette.accentColor,
+                          FontType.bold,
+                        ),
+                      ),
+                    );
+                  }
+
+                  return const SizedBox();
                 },
-                size: UIHelper.appBarButtonHeight,
               ),
+              // CustomIconButton(
+              //   icon: R.assetsImagesIconsDelete,
+              //   isCircular: true,
+              //   onTap: () {
+              //     _cartBloc?.showConfirmationDialog();
+              //   },
+              //   size: UIHelper.appBarButtonHeight,
+              // ),
             ],
           ),
           _getBody(),
@@ -128,6 +158,7 @@ class _CartScreenState extends BaseState<CartScreen>
               ),
             );
           }
+          return Expanded(child: _getEmptyCartWidget());
         }
         return const SizedBox();
       },
@@ -295,6 +326,58 @@ class _CartScreenState extends BaseState<CartScreen>
         false,
         ThemePalette.selectedTextColor,
         FontType.bold,
+      ),
+    );
+  }
+
+  Widget _getEmptyCartWidget() {
+    return Padding(
+      padding: const EdgeInsets.all(UIHelper.largePadding),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            child: Lottie.asset(
+              R.assetsLottieEmptyCart,
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.width * 0.5,
+              fit: BoxFit.cover,
+            ),
+          ),
+          UIHelper.verticalSpaceMedium,
+          Text(
+            AppLocalizations.getLocalization().emptyCartTitle,
+            style: AppTextStyle.getMediumTextStyle(
+              false,
+              ThemePalette.primaryText,
+              FontType.bold,
+            ),
+          ),
+          UIHelper.verticalSpaceSmall,
+          Text(
+            AppLocalizations.getLocalization().emptyCartText,
+            style: AppTextStyle.getMediumTextStyle(
+              false,
+              ThemePalette.primaryText,
+              FontType.medium,
+            ),
+          ),
+          UIHelper.customVerticalSizedBox(30),
+          PrimaryButton(
+            title: AppLocalizations.getLocalization().startShopping,
+            onTap: () {
+              NavigatorService.pop();
+            },
+            padding: EdgeInsets.symmetric(horizontal: UIHelper.smallPadding),
+            textStyle: AppTextStyle.getMediumTextStyle(
+              false,
+              ThemePalette.selectedTextColor,
+              FontType.bold,
+            ),
+            // height: btnSize,
+          ),
+        ],
       ),
     );
   }

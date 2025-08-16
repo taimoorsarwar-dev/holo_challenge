@@ -5,8 +5,11 @@ import 'package:holo_challenge/core/theme/ui_helper.dart';
 import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/network/cart/cart_model.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
+import 'package:holo_challenge/r.dart';
 import 'package:holo_challenge/utils/currency_utils.dart';
+import 'package:holo_challenge/widgets/buttons/custom_icon_button.dart';
 import 'package:holo_challenge/widgets/image/custom_cached_network_image.dart';
+import 'package:holo_challenge/widgets/image/multi_source_image.dart';
 
 import 'add_to_cart_button.dart';
 
@@ -125,7 +128,21 @@ class CartProductItemCard extends StatelessWidget {
             model: productModel,
             showCompatButton: true,
           ),
-          _getTotalPriceWidget(model: cartProduct),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _getTotalPriceWidget(model: cartProduct),
+              CustomIconButton(
+                icon: R.assetsImagesIconsDelete,
+                buttonIconSize: ButtonIconSize.small,
+                isCircular: true,
+                onTap: () {
+                  cartBloc?.manageCart(productModel: productModel, quantity: 0);
+                },
+                size: UIHelper.chipButtonHeight,
+              ),
+            ],
+          ),
         ],
       );
     }
@@ -140,15 +157,12 @@ class CartProductItemCard extends StatelessWidget {
         num totalPrice = price * quantity;
         String? finalPrice = CurrencyUtils.getValueWithCurrency(totalPrice);
         if (finalPrice != null && finalPrice.isNotEmpty) {
-          return Container(
-            margin: EdgeInsets.only(bottom: UIHelper.smallPadding),
-            child: Text(
-              finalPrice,
-              style: AppTextStyle.getMediumTextStyle(
-                false,
-                ThemePalette.accentColor,
-                FontType.bold,
-              ),
+          return Text(
+            finalPrice,
+            style: AppTextStyle.getMediumTextStyle(
+              false,
+              ThemePalette.accentColor,
+              FontType.bold,
             ),
           );
         }

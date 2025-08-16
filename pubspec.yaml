@@ -40,6 +40,7 @@ dependencies:
   http: ^1.5.0
   intl: ^0.20.2
   logger: ^2.6.1
+  lottie: ^3.3.1
   oktoast: ^3.4.0
   shared_preferences: ^2.5.3
 
@@ -79,6 +80,8 @@ flutter:
     - assets/images/icons/arrowLeft.png
     - assets/images/icons/profile.png
     - assets/images/icons/delete.png
+    # assets/lottie/*
+    - assets/lottie/emptyCart.json
     # assets-generator-end
 
   fonts:

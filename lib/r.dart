@@ -19,4 +19,6 @@ class R {
   static final String assetsImagesIconsProfile = 'assets/images/icons/profile.png';
   /// ![](http://127.0.0.1:7738/assets/images/icons/delete.png)
   static final String assetsImagesIconsDelete = 'assets/images/icons/delete.png';
+  /// ![](http://127.0.0.1:7738/assets/lottie/emptyCart.json)
+  static final String assetsLottieEmptyCart = 'assets/lottie/emptyCart.json';
 }
