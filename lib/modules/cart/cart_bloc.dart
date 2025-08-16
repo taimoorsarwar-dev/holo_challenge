@@ -24,6 +24,9 @@ class CartBloc extends BlocBase {
   String? title;
   CartModel? cart;
 
+  static const String _cartKey = LocalStorageKeys.cartKey;
+  static const String _cartCountKey = LocalStorageKeys.cartCountKey;
+
   CartBloc({this.title}) {
     if (title != null && title?.isNotEmpty == true) {
       setTitle(title: title);
@@ -43,9 +46,7 @@ class CartBloc extends BlocBase {
 
   Future<void> _initCart() async {
     // Load from SharedPreferences
-    final savedCart = await SharedPreferencesUtils.getObject(
-      key: LocalStorageKeys.cartKey,
-    );
+    final savedCart = await SharedPreferencesUtils.getObject(key: _cartKey);
     if (savedCart != null) {
       try {
         cart = CartModel.fromJson(savedCart);
@@ -70,14 +71,8 @@ class CartBloc extends BlocBase {
   void clearCart() {
     // resetCart();
     // Explicitly clear from storage first and then reset
-    SharedPreferencesUtils.saveObject(
-      key: LocalStorageKeys.cartKey,
-      value: null,
-    );
-    SharedPreferencesUtils.saveInt(
-      key: LocalStorageKeys.cartCountKey,
-      value: 0,
-    );
+    SharedPreferencesUtils.saveObject(key: _cartKey, value: null);
+    SharedPreferencesUtils.saveInt(key: _cartCountKey, value: 0);
 
     resetCart();
   }
@@ -160,7 +155,7 @@ class CartBloc extends BlocBase {
   Future<void> _persistCart() async {
     if (cart != null) {
       await SharedPreferencesUtils.saveObject(
-        key: LocalStorageKeys.cartKey,
+        key: _cartKey,
         value: cart?.toJson(),
       );
     }
@@ -168,7 +163,7 @@ class CartBloc extends BlocBase {
 
   Future<void> _persistCartCount() async {
     await SharedPreferencesUtils.saveInt(
-      key: LocalStorageKeys.cartCountKey,
+      key: _cartCountKey,
       value: getTotalQuantity(cart),
     );
   }
