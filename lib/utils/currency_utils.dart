@@ -9,7 +9,16 @@ class CurrencyUtils {
       CurrencyModel currency =
           locator<UserPreferencesBloc>().getSelectedCurrency();
 
-      final formatter = NumberFormat("###,###");
+      // final formatter = NumberFormat("###,###");
+
+      final hasDecimals = value % 1 != 0;
+
+      // Use different formats based on whether the number has decimals
+      final formatter =
+          hasDecimals
+              ? NumberFormat("#,##0.##") // Supports up to 2 decimal places
+              : NumberFormat("#,##0");
+
       return "${currency.displayName()!} ${formatter.format(value)}";
     }
 
