@@ -22,7 +22,7 @@ class CartBloc extends BlocBase {
   CartModel? cart;
 
   CartBloc({this.title}) {
-    if (title != null && title!.isNotEmpty) {
+    if (title != null && title?.isNotEmpty == true) {
       setTitle(title: title);
     }
     defaultCart();
@@ -46,25 +46,32 @@ class CartBloc extends BlocBase {
   }
 
   void manageCart({ProductModel? productModel, int quantity = 0}) {
-    if (productModel == null) return;
+    if (productModel == null || cart == null) return;
 
     bool productExists = false;
+    int productIndex = -1;
 
     // Update existing product if found
     if (cart != null) {
       List<CartProduct>? products = cart?.products;
       if (products != null && products.isNotEmpty) {
-        for (CartProduct cartProduct in products) {
-          if (cartProduct.productModel?.id == productModel.id) {
-            //set the quantity directly
-            cartProduct.quantity = quantity;
+        for (int i = 0; i < products.length; i++) {
+          if (products[i].productModel?.id == productModel.id) {
             productExists = true;
+            productIndex = i;
             break;
           }
         }
       }
 
       if (productExists) {
+        if (quantity > 0) {
+          // Update quantity if > 0
+          cart?.products?[productIndex].quantity = quantity;
+        } else {
+          // Remove product if quantity is 0
+          cart?.products?.removeAt(productIndex);
+        }
         cart?.date = DateTime.now().toUtc().toIso8601String();
       }
     }
