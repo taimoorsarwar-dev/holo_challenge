@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/core/theme/ui_theme.dart';
-import 'package:holo_challenge/modules/base/base_bloc.dart';
 import 'package:holo_challenge/modules/base/base_state.dart';
 import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/network/cart/cart_model.dart';
@@ -62,10 +61,7 @@ class _CartScreenState extends BaseState<CartScreen>
     }
 
     return Scaffold(
-      body: BlocProvider<CartBloc>(
-        bloc: _cartBloc,
-        child: Stack(children: <Widget>[_getBaseContainer()]),
-      ),
+      body: _getBaseContainer(),
       backgroundColor: ThemePalette.backgroundColor,
     );
   }
