@@ -1,10 +1,13 @@
 import 'package:holo_challenge/core/app_router/navigator_service.dart';
 import 'package:holo_challenge/core/app_router/route_names.dart';
+import 'package:holo_challenge/core/constants/local_storage_keys.dart';
 import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/modules/base/base_bloc.dart';
 import 'package:holo_challenge/modules/products/details/product_details_screen.dart';
 import 'package:holo_challenge/network/cart/cart_model.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
+import 'package:holo_challenge/utils/app_logger.dart';
+import 'package:holo_challenge/utils/shared_preferences_utils.dart';
 import 'package:holo_challenge/widgets/dialog/confirmation_dialog.dart';
 import 'package:rxdart/subjects.dart';
 
@@ -25,7 +28,7 @@ class CartBloc extends BlocBase {
     if (title != null && title?.isNotEmpty == true) {
       setTitle(title: title);
     }
-    defaultCart();
+    _initCart();
   }
 
   @override
@@ -35,14 +38,48 @@ class CartBloc extends BlocBase {
     _totalCountController.close();
   }
 
-  void defaultCart() {
-    cart = CartModel(id: cart?.id, userId: cart?.userId);
+  CartModel? _getDefaultCartModel() =>
+      CartModel(id: cart?.id, userId: cart?.userId);
+
+  Future<void> _initCart() async {
+    // Load from SharedPreferences
+    final savedCart = await SharedPreferencesUtils.getObject(
+      key: LocalStorageKeys.cartKey,
+    );
+    if (savedCart != null) {
+      try {
+        cart = CartModel.fromJson(savedCart);
+      } catch (e) {
+        AppLogger.log(
+          'Error parsing saved cart in _initCart: $e',
+          LoggingType.error,
+        );
+        cart = _getDefaultCartModel();
+      }
+    } else {
+      cart = _getDefaultCartModel();
+    }
     setCart(cart);
-    setCartCount(cart);
+  }
+
+  void resetCart() {
+    cart = _getDefaultCartModel();
+    setCart(cart);
   }
 
   void clearCart() {
-    defaultCart();
+    // resetCart();
+    // Explicitly clear from storage first and then reset
+    SharedPreferencesUtils.saveObject(
+      key: LocalStorageKeys.cartKey,
+      value: null,
+    );
+    SharedPreferencesUtils.saveInt(
+      key: LocalStorageKeys.cartCountKey,
+      value: 0,
+    );
+
+    resetCart();
   }
 
   void manageCart({ProductModel? productModel, int quantity = 0}) {
@@ -90,19 +127,19 @@ class CartBloc extends BlocBase {
     }
 
     setCart(cart);
-    setCartCount(cart);
   }
 
   void setCart(CartModel? cart) {
     if (_cartStreamController.isClosed == false) {
       _cartStreamController.sink.add(cart);
     }
-  }
 
-  void setCartCount(CartModel? cart) {
     if (!_totalCountController.isClosed) {
       _totalCountController.sink.add(getTotalQuantity(cart));
     }
+
+    _persistCart();
+    _persistCartCount();
   }
 
   int getTotalQuantity(CartModel? cart) {
@@ -118,6 +155,22 @@ class CartBloc extends BlocBase {
     }
 
     return total;
+  }
+
+  Future<void> _persistCart() async {
+    if (cart != null) {
+      await SharedPreferencesUtils.saveObject(
+        key: LocalStorageKeys.cartKey,
+        value: cart?.toJson(),
+      );
+    }
+  }
+
+  Future<void> _persistCartCount() async {
+    await SharedPreferencesUtils.saveInt(
+      key: LocalStorageKeys.cartCountKey,
+      value: getTotalQuantity(cart),
+    );
   }
 
   void navigateToProductDetailsScreen({required ProductModel? productModel}) {

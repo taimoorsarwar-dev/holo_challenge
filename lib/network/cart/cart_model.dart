@@ -40,13 +40,17 @@ class CartProduct {
   CartProduct({this.productModel, this.quantity});
 
   CartProduct.fromJson(Map<String, dynamic> json) {
-    productModel = json['product'];
+    // productModel = json['product'];
+    productModel =
+        json['product'] != null ? ProductModel.fromJson(json['product']) : null;
+
     quantity = json['quantity'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['product'] = productModel;
+    // data['product'] = productModel;
+    data['product'] = productModel?.toJson();
     data['quantity'] = quantity;
     return data;
   }
