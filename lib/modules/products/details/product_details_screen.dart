@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:holo_challenge/core/app_router/navigator_service.dart';
 import 'package:holo_challenge/core/di/app_locator.dart';
-import 'package:holo_challenge/core/localization/app_localization.dart';
+import 'package:holo_challenge/core/theme/ui_theme.dart';
 import 'package:holo_challenge/modules/base/base_bloc.dart';
 import 'package:holo_challenge/modules/base/base_state.dart';
 import 'package:holo_challenge/modules/cart/add_to_cart_button.dart';
 import 'package:holo_challenge/modules/cart/cart_bloc.dart';
-import 'package:holo_challenge/network/cart/cart_model.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
 import 'package:holo_challenge/r.dart';
 import 'package:holo_challenge/utils/currency_utils.dart';
 import 'package:holo_challenge/utils/ui_util.dart';
 import 'package:holo_challenge/widgets/buttons/custom_icon_button.dart';
-import 'package:holo_challenge/widgets/buttons/primary_button.dart';
 import 'package:holo_challenge/widgets/image/custom_cached_network_image.dart';
-import 'package:holo_challenge/widgets/loader/custom_toast.dart';
 import 'package:holo_challenge/widgets/rating/star_rating.dart';
 
-import '../../../core/theme/ui_theme.dart';
 import 'product_details_bloc.dart';
 
 class ProductDetailsScreenParams {
@@ -349,129 +345,5 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
     }
 
     return const SizedBox();
-    if (model == null) return const SizedBox();
-    return StreamBuilder<CartModel?>(
-      stream: _cartBloc?.cartStream,
-      builder: (context, snapshot) {
-        int currentQuantity = 0;
-        CartModel? cart = snapshot.data;
-
-        // Get current quantity from cart
-        if (cart != null) {
-          List<CartProduct>? products = cart.products;
-          if (products != null) {
-            for (var product in products) {
-              if (product.productId == model.id) {
-                currentQuantity = product.quantity ?? 0;
-                break;
-              }
-            }
-          }
-        }
-
-        if (currentQuantity == 0) {
-          return PrimaryButton(
-            title: AppLocalizations.getLocalization().addToCart,
-            onTap: () {
-              _cartBloc?.manageCart(productModel: model, quantity: 1);
-            },
-            padding: EdgeInsets.symmetric(horizontal: UIHelper.smallPadding),
-            textStyle: AppTextStyle.getMediumTextStyle(
-              false,
-              ThemePalette.selectedTextColor,
-              FontType.bold,
-            ),
-            height: UIHelper.outlineButtonHeight,
-          );
-        }
-
-        return Container(
-          height: UIHelper.outlineButtonHeight,
-          decoration: BoxDecoration(
-            color: ThemePalette.accentColor,
-            borderRadius: UIHelper.getBorderRadius(
-              radius: UIHelper.smallRadius,
-            ),
-          ),
-          child: ClipRRect(
-            borderRadius: UIHelper.getBorderRadius(
-              radius: UIHelper.smallRadius,
-            ),
-            child: Row(
-              children: [
-                MaterialButton(
-                  onPressed: () {
-                    _cartBloc?.manageCart(
-                      productModel: model,
-                      quantity: currentQuantity - 1,
-                    );
-                  },
-                  minWidth: 0,
-                  padding: EdgeInsets.zero,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  child: SizedBox(
-                    width: UIHelper.outlineButtonHeight,
-                    child: Center(
-                      child: Text(
-                        "-",
-                        style: AppTextStyle.getExtraLargeTextStyle(
-                          false,
-                          ThemePalette.selectedTextColor,
-                          FontType.medium,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: UIHelper.chipButtonHeight,
-                  child: Center(
-                    child: Text(
-                      currentQuantity.toString(),
-                      style: AppTextStyle.getLargeTextStyle(
-                        false,
-                        ThemePalette.selectedTextColor,
-                        FontType.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: () {
-                    if (currentQuantity >= 3) {
-                      CustomToast.show(
-                        "Max quantity added",
-                        type: ToastType.generic,
-                      );
-                    } else {
-                      _cartBloc?.manageCart(
-                        productModel: model,
-                        quantity: currentQuantity + 1,
-                      );
-                    }
-                  },
-                  minWidth: 0,
-                  padding: EdgeInsets.zero,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  child: SizedBox(
-                    width: UIHelper.outlineButtonHeight,
-                    child: Center(
-                      child: Text(
-                        "+",
-                        style: AppTextStyle.getExtraLargeTextStyle(
-                          false,
-                          ThemePalette.selectedTextColor,
-                          FontType.medium,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
   }
 }

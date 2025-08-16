@@ -24,6 +24,61 @@ class AppLocalizations {
     return _localization;
   }
 
+  String get checkoutNow {
+    return Intl.message('Checkout now', name: 'checkoutNow');
+  }
+
+  String get paymentSummary {
+    return Intl.message('Payment Summary', name: 'paymentSummary');
+  }
+
+  String get subTotal {
+    return Intl.message('Subtotal', name: 'subTotal');
+  }
+
+  String get items {
+    return Intl.message('Items', name: 'items');
+  }
+
+  String get deliveryFee {
+    return Intl.message('Delivery Fee', name: 'deliveryFee');
+  }
+
+  String get cartTotal {
+    return Intl.message('Cart Total', name: 'cartTotal');
+  }
+
+  String get totalItems {
+    return Intl.message('Total items', name: 'totalItems');
+  }
+
+  String get clearCart {
+    return Intl.message('Clear Cart', name: 'clearCart');
+  }
+
+  String get clearYourCart {
+    return Intl.message('Clear your cart?', name: 'clearYourCart');
+  }
+
+  String get clearYourCartText {
+    return Intl.message(
+      'All items in your cart will be removed. This action cannot be undone.',
+      name: 'clearYourCartText',
+    );
+  }
+
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel');
+  }
+
+  String get confirm {
+    return Intl.message('Cancel', name: 'confirm');
+  }
+
+  String get shoppingCart {
+    return Intl.message('Your Cart', name: 'shoppingCart');
+  }
+
   String get addToCart {
     return Intl.message('Add To Cart', name: 'addToCart');
   }

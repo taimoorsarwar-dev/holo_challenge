@@ -25,6 +25,10 @@ class ThemePalette {
     return Palette.accentColor;
   }
 
+  static Color get accentColorBg {
+    return Palette.accentColor.withOpacity(0.1);
+  }
+
   static get accentMedium {
     return Palette.accentMedium;
   }

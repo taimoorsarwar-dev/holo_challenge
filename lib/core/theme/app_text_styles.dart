@@ -14,6 +14,7 @@ class AppTextStyle {
   static const double _fontSizeSmall = 12;
   static const double _fontSizeMedium = 14;
   static const double _fontSizeLarge = 16;
+  static const double _fontSizeSemiMedium = 18;
   static const double _fontSizeExtraLarge = 22;
 
   static const double _lineHeight = 1.2;
@@ -82,6 +83,24 @@ class AppTextStyle {
       color: color,
       height: lineHeight,
       fontSize: AppResponsive.getFontSizeOf(_fontSizeMedium),
+      fontFamily: _getFont(fontType),
+    );
+  }
+
+  static TextStyle getSemiMediumTextStyle(
+    bool isBold,
+    Color? color,
+    FontType fontType, {
+    double lineHeight = _lineHeight,
+    TextDecoration? textDecoration,
+  }) {
+    return TextStyle(
+      decoration: textDecoration,
+      fontWeight: _getFontWeight(isBold),
+      fontStyle: FontStyle.normal,
+      color: color,
+      height: lineHeight,
+      fontSize: AppResponsive.getFontSizeOf(_fontSizeSemiMedium),
       fontFamily: _getFont(fontType),
     );
   }

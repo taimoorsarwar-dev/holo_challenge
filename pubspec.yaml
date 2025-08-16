@@ -70,6 +70,7 @@ flutter:
     # assets-generator-begin
     # assets/images/icons/*
     - assets/images/icons/add.png
+    - assets/images/icons/warning.png
     - assets/images/icons/tick.png
     - assets/images/icons/gallery.png
     - assets/images/icons/cancel.png
@@ -77,6 +78,7 @@ flutter:
     - assets/images/icons/completed.png
     - assets/images/icons/arrowLeft.png
     - assets/images/icons/profile.png
+    - assets/images/icons/delete.png
     # assets-generator-end
 
   fonts:

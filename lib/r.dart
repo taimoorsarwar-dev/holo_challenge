@@ -1,6 +1,8 @@
 class R {
   /// ![](http://127.0.0.1:7738/assets/images/icons/add.png)
   static final String assetsImagesIconsAdd = 'assets/images/icons/add.png';
+  /// ![](http://127.0.0.1:7738/assets/images/icons/warning.png)
+  static final String assetsImagesIconsWarning = 'assets/images/icons/warning.png';
   /// ![](http://127.0.0.1:7738/assets/images/icons/tick.png)
   static final String assetsImagesIconsTick = 'assets/images/icons/tick.png';
   /// ![](http://127.0.0.1:7738/assets/images/icons/gallery.png)
@@ -15,4 +17,6 @@ class R {
   static final String assetsImagesIconsArrowLeft = 'assets/images/icons/arrowLeft.png';
   /// ![](http://127.0.0.1:7738/assets/images/icons/profile.png)
   static final String assetsImagesIconsProfile = 'assets/images/icons/profile.png';
+  /// ![](http://127.0.0.1:7738/assets/images/icons/delete.png)
+  static final String assetsImagesIconsDelete = 'assets/images/icons/delete.png';
 }

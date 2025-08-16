@@ -1,6 +1,8 @@
 import 'package:holo_challenge/core/app_router/navigator_service.dart';
 import 'package:holo_challenge/core/app_router/route_names.dart';
 import 'package:holo_challenge/modules/base/base_bloc.dart';
+import 'package:holo_challenge/modules/cart/cart_bloc.dart';
+import 'package:holo_challenge/modules/cart/cart_screen.dart';
 import 'package:holo_challenge/modules/products/details/product_details_screen.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
 import 'package:holo_challenge/network/product/products_repository.dart';
@@ -49,6 +51,13 @@ class ProductBloc extends BlocBase {
         false,
         productModel: productModel,
       ),
+    );
+  }
+
+  void navigateToCartScreen(CartBloc? cartBloc) {
+    NavigatorService.pushNamed(
+      RouteNames.cart,
+      arguments: CartScreenParams(-1, false, cartBloc: cartBloc),
     );
   }
 }

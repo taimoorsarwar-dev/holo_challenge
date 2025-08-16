@@ -39,9 +39,9 @@ class AddToCartButton extends StatelessWidget {
         if (cart != null) {
           List<CartProduct>? products = cart.products;
           if (products != null) {
-            for (var product in products) {
-              if (product.productId == model.id) {
-                currentQuantity = product.quantity ?? 0;
+            for (CartProduct cartProduct in products) {
+              if (cartProduct.productModel?.id == model.id) {
+                currentQuantity = cartProduct.quantity ?? 0;
                 break;
               }
             }
@@ -173,7 +173,5 @@ class AddToCartButton extends StatelessWidget {
         );
       },
     );
-
-    return const SizedBox();
   }
 }

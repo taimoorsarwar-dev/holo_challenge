@@ -95,7 +95,9 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
                     icon: R.assetsImagesIconsCart,
                     isCircular: true,
                     count: count,
-                    onTap: () {},
+                    onTap: () {
+                      _productBloc?.navigateToCartScreen(_cartBloc);
+                    },
                     size: UIHelper.appBarButtonHeight,
                   );
                 },

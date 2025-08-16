@@ -17,6 +17,7 @@ class UIHelper {
   static const double smallPadding = 12;
   static const double mediumPadding = 16;
   static const double largePadding = 20;
+  static const double extraLargePadding = 25;
 
   //radius
   static const double smallRadius = 6;
@@ -31,12 +32,16 @@ class UIHelper {
 
   static const Widget horizontalSpaceSmall = SizedBox(width: spaceTen);
   static const Widget horizontalSpaceExtraSmall = SizedBox(width: spaceFive);
+  static const Widget verticalSpaceSmall = SizedBox(height: spaceTen);
+  static const Widget verticalSpaceMedium = SizedBox(height: spaceTwenty);
+  static const Widget verticalSpaceExtraSmall = SizedBox(height: spaceFive);
 
   static const double spaceFour = 4.0;
   static const double spaceFive = 5.0;
   static const double spaceSix = 6.0;
   static const double spaceEight = 8.0;
   static const double spaceTen = 10.0;
+  static const double spaceTwenty = 20.0;
 
   static customHorizontalSizedBox(double width) {
     return SizedBox(width: width);
