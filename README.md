@@ -1,19 +1,83 @@
-# holo_challenge
+# Holo Challenge - Flutter E-commerce App
 
-A new Flutter project.
+A Flutter e-commerce application built as part of the Holo technical assessment. This app demonstrates clean architecture, state management, and API integration to create a seamless shopping experience.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+### Core Features
+- **Products Screen**: Browse through a list of products with image, title, price, category, loading states
+- **Product Details**: View detailed information about individual products with Add to cart
+- **Cart**: View products, update quantity, remove product, clear cart, summary
+- **Responsive Design**: Support both iOS and Android
 
-A few resources to get you started if this is your first Flutter project:
+### Design Choices
+- **Clean Architecture**: Following BLoC pattern using get_it with stream-based state management
+- **State Management**: Custom BLoC implementation using RxDart streams
+- **Local Storage**: Cart persistence using SharedPreferences
+- **Network Layer**: REST API integration using http package with proper error handling for fakestoreapi structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🏗️ Architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app follows **BLoC (Business Logic Component) architecture** with stream-based state management:
+
+```
+lib/
+├── core/
+│   ├── api_service/       # Api service request
+│   ├── app_router/        # Navigation service and routes
+│   ├── di/                # Dependency injection setup
+│   ├── constants/         # Constants for SharedPreferences keys, api endpoints, and app constants such as appName etc
+│   ├── theme/             # App theming and responsive design
+│   └── localization/      # English and Arabic support
+├── modules/
+│   ├── base/              # Base BLoC, state classes, custom popscope
+│   ├── products/          # Product listing and details
+│   ├── cart/              # Shopping cart functionality
+│   └── settings/          # App settings
+│   └── user_preferences/  # User preferences such as theme, language and currency
+├── network/
+│   ├── product/           # Product API models and repository
+│   └── base/              # Network base classes
+├── widgets/               # Reusable UI components
+├── utils/                 # Reusable utilies such as logger, currency formats, network check, shared preferences, validation etc
+└── main.dart
+```
+
+## 🌐 API Integration
+
+### FakeStore API
+This application integrates with the FakeStore API (https://fakestoreapi.com) with the following endpoints:
+
+- **GET /products** - Fetch all products
+- **GET /products/{id}** - Fetch product by ID
+
+### API Limitations & Workarounds
+**Note**: Due to limitations with the FakeStore API, only the products endpoints were reliable for this implementation:
+- **Products API**: Successfully implemented products list and fetch product by id
+- **Users API**: Data inconsistency prevented proper login/signup implementation
+- **Cart API**: Server-side cart functionality was unreliable
+
+**Solution**: Implemented local cart management using SharedPreferences to ensure cart persistence across app sessions.
+
+
+### ✅ Completed Requirements
+- [x] Product listing with API integration (image, title, price, category, loading states)
+- [x] Product detail view (image, title, price, category, Add to cart)
+- [x] Shopping cart View products, update quantity, remove product, clear cart, summary
+- [x] Cart persistence using shared preferences
+- [x] Responsive UI design
+- [x] Error handling, empty states and loading states
+- [x] Support iOS and Android
+- [x] Theme switcher
+- [x] Language switcher
+
+### ⚠️ Known Limitations
+- **Authentication**: Login/Signup not implemented due to FakeStore API user data inconsistencies
+- **Server-side Cart**: Using local cart persistence instead of API-based cart due to API limitations
+
+
+===============================================
+
 
 - To Update splash screen run
   dart run flutter_native_splash:create
