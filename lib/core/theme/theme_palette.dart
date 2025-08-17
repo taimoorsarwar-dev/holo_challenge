@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:holo_challenge/core/di/app_locator.dart';
+import 'package:holo_challenge/modules/user/user_preferences_bloc.dart';
 
 import 'palette.dart';
 
@@ -10,11 +12,21 @@ class ThemePalette {
   }
 
   static get whiteColor {
-    return Palette.whiteColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.blackColor;
+    } else {
+      return Palette.whiteColor;
+    }
   }
 
   static get blackColor {
-    return Palette.blackColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.whiteColor;
+    } else {
+      return Palette.blackColor;
+    }
   }
 
   static get transparentColor {
@@ -30,73 +42,146 @@ class ThemePalette {
   }
 
   static get accentMedium {
-    return Palette.accentMedium;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.accentMediumDark;
+    } else {
+      return Palette.accentMedium;
+    }
   }
 
   static get backgroundColor {
-    return Palette.backgroundColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.backgroundColorDark;
+    } else {
+      return Palette.backgroundColor;
+    }
   }
 
   static get primaryText {
-    return Palette.primaryText;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.primaryTextDark;
+    } else {
+      return Palette.primaryText;
+    }
   }
 
   static get secondaryText {
-    return Palette.secondaryText;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.secondaryTextDark;
+    } else {
+      return Palette.secondaryText;
+    }
   }
 
   static get hintText {
-    return Palette.hintText;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.hintTextDark;
+    } else {
+      return Palette.hintText;
+    }
   }
 
   static get selectedTextColor {
-    return Palette.whiteColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.cellBackgroundColorDark;
+    } else {
+      return Palette.whiteColor;
+    }
   }
 
   static get borderColor {
-    return Palette.borderColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.borderColorDark;
+    } else {
+      return Palette.borderColor;
+    }
   }
 
   static Color get cellBackgroundColor {
-    return Palette.whiteColor;
-
-    // if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
-    //     CustomTheme.dark) {
-    //   return Palette.whiteColor;
-    // } else {
-    //   return Palette.whiteColor;
-    // }
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.cellBackgroundColorDark;
+    } else {
+      return Palette.whiteColor;
+    }
   }
 
   static get dividerColor {
-    return Palette.dividerColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.dividerColorDark;
+    } else {
+      return Palette.dividerColor;
+    }
   }
 
   static get iconsColor {
-    return Palette.iconsColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.iconsColorDark;
+    } else {
+      return Palette.iconsColor;
+    }
   }
 
   static get splashColor {
-    return Palette.splashColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.splashColorDark;
+    } else {
+      return Palette.splashColor;
+    }
   }
 
   static get errorRedMessage {
-    return Palette.errorRedMessage;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.errorRedMessage;
+    } else {
+      return Palette.errorRedMessage;
+    }
   }
 
   static get successGreenMessage {
-    return Palette.successGreenMessage;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.successGreenMessage;
+    } else {
+      return Palette.successGreenMessage;
+    }
   }
 
   static get inActiveBgColor {
-    return Palette.inActiveBgColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.inActiveBgColorDark;
+    } else {
+      return Palette.inActiveBgColor;
+    }
   }
 
   static get galleryBgColor {
-    return Palette.galleryBgColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.galleryBgColorDark;
+    } else {
+      return Palette.galleryBgColor;
+    }
   }
 
   static get unSelectedColor {
-    return Palette.unSelectedColor;
+    if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
+        CustomTheme.dark) {
+      return Palette.unSelectedColorDark;
+    } else {
+      return Palette.unSelectedColor;
+    }
   }
 }
