@@ -4,6 +4,7 @@ import 'package:holo_challenge/modules/base/base_bloc.dart';
 import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/modules/cart/cart_screen.dart';
 import 'package:holo_challenge/modules/products/details/product_details_screen.dart';
+import 'package:holo_challenge/modules/settings/settings_screen.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
 import 'package:holo_challenge/network/product/products_repository.dart';
 import 'package:rxdart/subjects.dart';
@@ -58,6 +59,13 @@ class ProductBloc extends BlocBase {
     NavigatorService.pushNamed(
       RouteNames.cart,
       arguments: CartScreenParams(-1, false, cartBloc: cartBloc),
+    );
+  }
+
+  void navigateToSettingsScreen() {
+    NavigatorService.pushNamed(
+      RouteNames.settings,
+      arguments: SettingsScreenParams(-1, false),
     );
   }
 }

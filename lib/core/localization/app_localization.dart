@@ -24,6 +24,18 @@ class AppLocalizations {
     return _localization;
   }
 
+  String get preferences {
+    return Intl.message("Preferences", name: 'preferences');
+  }
+
+  String get darkTheme {
+    return Intl.message("Dark theme?", name: 'darkTheme');
+  }
+
+  String get settings {
+    return Intl.message("Settings", name: 'settings');
+  }
+
   String get emptyCartTitle {
     return Intl.message("Oh no, it's empty in here!", name: 'emptyCartTitle');
   }

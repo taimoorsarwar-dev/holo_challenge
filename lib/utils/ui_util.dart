@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:holo_challenge/core/theme/app_responsive.dart';
 import 'package:holo_challenge/core/theme/app_text_styles.dart';
 import 'package:holo_challenge/core/theme/theme_palette.dart';
 import 'package:holo_challenge/core/theme/ui_helper.dart';
@@ -64,5 +65,26 @@ class UiUtils {
       );
     }
     return const SizedBox();
+  }
+
+  static Widget getToggleSwitch({
+    bool selectedValue = false,
+    ValueChanged? onChanged,
+  }) {
+    return Transform.scale(
+      scale:
+          AppResponsive.isDeviceTablet
+              ? UIHelper.defaultScaleFactor
+              : UIHelper.scaleFactor0_9,
+      child: CupertinoSwitch(
+        value: selectedValue,
+        activeTrackColor: ThemePalette.accentColor,
+        onChanged: (bool value) {
+          if (onChanged != null) {
+            onChanged(value);
+          }
+        },
+      ),
+    );
   }
 }

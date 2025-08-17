@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:holo_challenge/modules/cart/cart_screen.dart';
 import 'package:holo_challenge/modules/products/details/product_details_screen.dart';
 import 'package:holo_challenge/modules/products/list/products_screen.dart';
+import 'package:holo_challenge/modules/settings/settings_screen.dart';
 import 'package:holo_challenge/utils/app_logger.dart';
 
 import 'route_names.dart';
@@ -22,6 +23,10 @@ class AppRouter {
         case RouteNames.cart:
           final args = settings.arguments as CartScreenParams?;
           return _materialPageRoute(CartScreen(params: args));
+
+        case RouteNames.settings:
+          final args = settings.arguments as SettingsScreenParams?;
+          return _materialPageRoute(SettingsScreen(params: args));
 
         default:
           return _noRouteWidget(path);

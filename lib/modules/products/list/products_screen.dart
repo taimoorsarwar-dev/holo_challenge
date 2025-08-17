@@ -9,6 +9,7 @@ import 'package:holo_challenge/modules/cart/cart_bloc.dart';
 import 'package:holo_challenge/modules/products/list/product_item_card.dart';
 import 'package:holo_challenge/network/product/product_model.dart';
 import 'package:holo_challenge/r.dart';
+import 'package:holo_challenge/widgets/avatar/avatar.dart';
 import 'package:holo_challenge/widgets/buttons/custom_icon_button.dart';
 
 import 'product_bloc.dart';
@@ -83,6 +84,12 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
           getAppBarWidget(
             titleStream: _productBloc?.titleStream,
             isBackNeeded: widget.params?.isLaunchedInTab == false,
+            leadingWidget: AvatarWidget(
+              onProfileClick: () {
+                _productBloc?.navigateToSettingsScreen();
+              },
+              isCircular: true,
+            ),
             suffixWidgets: [
               StreamBuilder(
                 stream: locator<CartBloc>().totalCount,

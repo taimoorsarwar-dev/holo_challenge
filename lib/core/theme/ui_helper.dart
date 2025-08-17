@@ -30,6 +30,10 @@ class UIHelper {
   static const double cardElevation = 0.0;
   static const double appBarElevation = 0.0;
 
+  //scale
+  static const double defaultScaleFactor = 1.0;
+  static const double scaleFactor0_9 = 0.9;
+
   static const Widget horizontalSpaceSmall = SizedBox(width: spaceTen);
   static const Widget horizontalSpaceExtraSmall = SizedBox(width: spaceFive);
   static const Widget verticalSpaceSmall = SizedBox(height: spaceTen);
