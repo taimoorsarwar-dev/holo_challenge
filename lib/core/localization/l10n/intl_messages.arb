@@ -1,0 +1,138 @@
+{
+  "@@last_modified": "2025-08-17T20:32:30.102486",
+  "language": "Language",
+  "@language": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "english": "English",
+  "@english": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "arabic": "Arabic",
+  "@arabic": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "preferences": "Preferences",
+  "@preferences": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "darkTheme": "Dark theme?",
+  "@darkTheme": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Settings",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "emptyCartTitle": "Oh no, it's empty in here!",
+  "@emptyCartTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "emptyCartText": "Let's fill it up with something special",
+  "@emptyCartText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startShopping": "Start Shopping",
+  "@startShopping": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkoutNow": "Checkout now",
+  "@checkoutNow": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "paymentSummary": "Payment Summary",
+  "@paymentSummary": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "subTotal": "Subtotal",
+  "@subTotal": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "items": "Items",
+  "@items": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deliveryFee": "Delivery Fee",
+  "@deliveryFee": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "cartTotal": "Cart Total",
+  "@cartTotal": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "totalItems": "Total items",
+  "@totalItems": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "clearCart": "Clear Cart",
+  "@clearCart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "clearYourCart": "Clear your cart?",
+  "@clearYourCart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "clearYourCartText": "All items in your cart will be removed. This action cannot be undone.",
+  "@clearYourCartText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "shoppingCart": "Your Cart",
+  "@shoppingCart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addToCart": "Add To Cart",
+  "@addToCart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dark": "Dark",
+  "@dark": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "light": "Light",
+  "@light": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInternetConnection": "No internet connection. Please check your network and try again.",
+  "@noInternetConnection": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "serverTakingLongRespond": "The server is taking too long to respond. Please try again later.",
+  "@serverTakingLongRespond": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "somethingWentWrong": "Something went wrong! Please try after sometime.",
+  "@somethingWentWrong": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

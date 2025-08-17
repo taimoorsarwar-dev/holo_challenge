@@ -24,6 +24,18 @@ class AppLocalizations {
     return _localization;
   }
 
+  String get language {
+    return Intl.message("Language", name: 'language');
+  }
+
+  String get english {
+    return Intl.message("English", name: 'english');
+  }
+
+  String get arabic {
+    return Intl.message("Arabic", name: 'arabic');
+  }
+
   String get preferences {
     return Intl.message("Preferences", name: 'preferences');
   }
@@ -96,10 +108,6 @@ class AppLocalizations {
 
   String get cancel {
     return Intl.message('Cancel', name: 'cancel');
-  }
-
-  String get confirm {
-    return Intl.message('Cancel', name: 'confirm');
   }
 
   String get shoppingCart {

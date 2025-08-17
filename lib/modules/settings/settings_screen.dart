@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:holo_challenge/core/config/supported_lang.dart';
 import 'package:holo_challenge/core/di/app_locator.dart';
 import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/core/theme/ui_theme.dart';
@@ -117,7 +118,11 @@ class SettingsScreenState extends BaseState<SettingsScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            children: [_getThemeWidget()],
+            children: [
+              _getThemeWidget(),
+              UIHelper.verticalSpaceSmall,
+              _getLanguageWidget(),
+            ],
           ),
         ],
       ),
@@ -140,11 +145,58 @@ class SettingsScreenState extends BaseState<SettingsScreen> {
             _getLabelWidget(
               label: AppLocalizations.getLocalization().darkTheme,
             ),
-            UiUtils.getToggleSwitch(
-              selectedValue: theme == CustomTheme.dark,
-              onChanged: (value) {
-                _settingsBloc?.manageTheme(isDarkTheme: value);
-              },
+            Row(
+              children: [
+                _getLabelWidget(
+                  label: AppLocalizations.getLocalization().light,
+                ),
+                UiUtils.getToggleSwitch(
+                  selectedValue: theme == CustomTheme.dark,
+                  onChanged: (value) {
+                    _settingsBloc?.manageTheme(isDarkTheme: value);
+                  },
+                ),
+                _getLabelWidget(label: AppLocalizations.getLocalization().dark),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _getLanguageWidget() {
+    return StreamBuilder(
+      stream: _settingsBloc?.selectedLanguage,
+      builder: (context, asyncSnapshot) {
+        AppLang lang = locator<UserPreferencesBloc>().getSelectedLanguage();
+
+        if (asyncSnapshot.hasData && asyncSnapshot.data is AppLang) {
+          lang = asyncSnapshot.data as AppLang;
+        }
+
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _getLabelWidget(label: AppLocalizations.getLocalization().language),
+            Row(
+              children: [
+                _getLabelWidget(
+                  label: AppLocalizations.getLocalization().english,
+                ),
+
+                UiUtils.getToggleSwitch(
+                  selectedValue:
+                      lang.displayName ==
+                      AppLang(SupportedLang.arabic).displayName,
+                  onChanged: (value) {
+                    _settingsBloc?.manageLanguage(isArabic: value);
+                  },
+                ),
+                _getLabelWidget(
+                  label: AppLocalizations.getLocalization().arabic,
+                ),
+              ],
             ),
           ],
         );
