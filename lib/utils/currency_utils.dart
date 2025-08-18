@@ -1,5 +1,6 @@
 import 'package:holo_challenge/core/config/currency_model.dart';
 import 'package:holo_challenge/core/di/app_locator.dart';
+import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/modules/user/user_preferences_bloc.dart';
 import 'package:intl/intl.dart';
 
@@ -19,7 +20,8 @@ class CurrencyUtils {
               ? NumberFormat("#,##0.##") // Supports up to 2 decimal places
               : NumberFormat("#,##0");
 
-      return "${currency.displayName()!} ${formatter.format(value)}";
+      // return "${currency.displayName()!} ${formatter.format(value)}";
+      return "${AppLocalizations.getLocalization().aed} ${formatter.format(value)}";
     }
 
     return null;
