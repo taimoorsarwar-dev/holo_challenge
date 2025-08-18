@@ -36,6 +36,8 @@ class ProductItemCard extends StatelessWidget {
             padding: EdgeInsets.zero,
 
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   alignment: Alignment.bottomRight,
@@ -52,30 +54,16 @@ class ProductItemCard extends StatelessWidget {
                       ),
                   ],
                 ),
-                Row(
-                  children: [
-                    // _getImageWidget(),
-                    // UIHelper.horizontalSpaceSmall,
-                    Expanded(
-                      child: Padding(
-                        padding: UIHelper.cardPaddingAll,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _getPriceWidget(model: productModel),
-                            _getTitleWidget(model: productModel),
-                            // if (cartBloc != null)
-                            //   AddToCartButton(
-                            //     cartBloc: cartBloc,
-                            //     model: productModel!,
-                            //     showCompatButton: true,
-                            //   ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: UIHelper.cardPaddingAll,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _getPriceWidget(model: productModel),
+                      _getTitleWidget(model: productModel),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -90,12 +78,8 @@ class ProductItemCard extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          // width: size,
           height: size,
-          decoration: BoxDecoration(
-            color: ThemePalette.dividerColor,
-            // borderRadius: UIHelper.cardBorderRadiusAll,
-          ),
+          decoration: BoxDecoration(color: ThemePalette.dividerColor),
           padding: EdgeInsets.all(UIHelper.extraSmallPadding),
           child: CustomCachedNetworkImage(
             productModel?.image ?? "",

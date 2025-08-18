@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:holo_challenge/core/di/app_locator.dart';
+import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/core/theme/app_responsive.dart';
 import 'package:holo_challenge/core/theme/theme_palette.dart';
 import 'package:holo_challenge/core/theme/ui_helper.dart';
@@ -35,18 +36,15 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
   CartBloc? _cartBloc;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     createBloc();
   }
 
   bool createBloc() {
-    _productBloc ??= ProductBloc(title: "Products");
+    _productBloc ??= ProductBloc(
+      title: AppLocalizations.getLocalization().products,
+    );
     _cartBloc ??= locator<CartBloc>();
     return false;
   }
@@ -79,53 +77,47 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
   Widget _getBaseContainer() {
     return SafeArea(
       bottom: false,
-      child: Column(
-        children: [
-          getAppBarWidget(
-            titleStream: _productBloc?.titleStream,
-            isBackNeeded: widget.params?.isLaunchedInTab == false,
-            leadingWidget: AvatarWidget(
-              onProfileClick: () {
-                _productBloc?.navigateToSettingsScreen();
-              },
-              isCircular: true,
-            ),
-            suffixWidgets: [
-              StreamBuilder(
-                stream: locator<CartBloc>().totalCount,
-                builder: (context, asyncSnapshot) {
-                  int? count;
-                  if (asyncSnapshot.hasData && asyncSnapshot.data is int) {
-                    count = asyncSnapshot.data as int;
-                  }
-                  return CustomIconButton(
-                    icon: R.assetsImagesIconsCart,
-                    isCircular: true,
-                    count: count,
-                    onTap: () {
-                      _productBloc?.navigateToCartScreen(_cartBloc);
-                    },
-                    size: UIHelper.appBarButtonHeight,
-                  );
-                },
-              ),
-            ],
-          ),
-          _getBody(),
-        ],
+      child: Column(children: [_getAppBarWidget(), _getBody()]),
+    );
+  }
+
+  Widget _getAppBarWidget() {
+    return getAppBarWidget(
+      titleStream: _productBloc?.titleStream,
+      isBackNeeded: widget.params?.isLaunchedInTab == false,
+      leadingWidget: AvatarWidget(
+        onProfileClick: () {
+          _productBloc?.navigateToSettingsScreen();
+        },
+        isCircular: true,
       ),
+      suffixWidgets: [
+        StreamBuilder(
+          stream: locator<CartBloc>().totalCount,
+          builder: (context, asyncSnapshot) {
+            int? count;
+            if (asyncSnapshot.hasData && asyncSnapshot.data is int) {
+              count = asyncSnapshot.data as int;
+            }
+            return CustomIconButton(
+              icon: R.assetsImagesIconsCart,
+              isCircular: true,
+              count: count,
+              onTap: () {
+                _productBloc?.navigateToCartScreen(_cartBloc);
+              },
+              size: UIHelper.appBarButtonHeight,
+            );
+          },
+        ),
+      ],
     );
   }
 
   Widget _getBody() {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(
-          UIHelper.largePadding,
-          0,
-          UIHelper.largePadding,
-          UIHelper.largePadding,
-        ),
+        padding: const EdgeInsets.all(UIHelper.largePadding),
         decoration: BoxDecoration(color: ThemePalette.backgroundColor),
         child: StreamBuilder<Object>(
           stream: _productBloc?.productsStream,
