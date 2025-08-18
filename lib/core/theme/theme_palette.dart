@@ -87,6 +87,8 @@ class ThemePalette {
   }
 
   static get selectedTextColor {
+    return Palette.whiteColor;
+
     if (locator<UserPreferencesBloc>().userPreferences.selectedTheme ==
         CustomTheme.dark) {
       return Palette.cellBackgroundColorDark;

@@ -62,7 +62,7 @@ class AddToCartButton extends StatelessWidget {
       return CustomIconButton(
         icon: R.assetsImagesIconsAdd,
         buttonIconSize: ButtonIconSize.extraExtraExtraSmall,
-        fillColor: ThemePalette.selectedTextColor,
+        fillColor: ThemePalette.cellBackgroundColor,
         iconColor: ThemePalette.accentColor,
         borderColor: ThemePalette.accentColor,
         showBorder: true,
