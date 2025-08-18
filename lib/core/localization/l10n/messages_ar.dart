@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static Map<String, dynamic> _notInlinedMessages(_) => {
       'addToCart': MessageLookupByLibrary.simpleMessage('أضف إلى السلة'),
+    'aed': MessageLookupByLibrary.simpleMessage('د.إ'),
     'arabic': MessageLookupByLibrary.simpleMessage('العربية'),
     'cancel': MessageLookupByLibrary.simpleMessage('إلغاء'),
     'cartTotal': MessageLookupByLibrary.simpleMessage('إجمالي السلة'),
@@ -42,9 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
     'items': MessageLookupByLibrary.simpleMessage('العناصر'),
     'language': MessageLookupByLibrary.simpleMessage('اللغة'),
     'light': MessageLookupByLibrary.simpleMessage('فاتح'),
+    'maxQuantityAdded': MessageLookupByLibrary.simpleMessage('تم إضافة الحد الأقصى للكمية'),
     'noInternetConnection': MessageLookupByLibrary.simpleMessage('لا يوجد اتصال بالإنترنت. يرجى التحقق من الشبكة والمحاولة مرة أخرى.'),
     'paymentSummary': MessageLookupByLibrary.simpleMessage('ملخص الدفع'),
     'preferences': MessageLookupByLibrary.simpleMessage('التفضيلات'),
+    'products': MessageLookupByLibrary.simpleMessage('المنتجات'),
+    'reviews': MessageLookupByLibrary.simpleMessage('التقييمات'),
     'serverTakingLongRespond': MessageLookupByLibrary.simpleMessage('الخادم يستغرق وقتًا طويلاً للرد. يرجى المحاولة مرة أخرى لاحقًا.'),
     'settings': MessageLookupByLibrary.simpleMessage('الإعدادات'),
     'shoppingCart': MessageLookupByLibrary.simpleMessage('سلة التسوق الخاصة بك'),

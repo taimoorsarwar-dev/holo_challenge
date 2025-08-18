@@ -1,5 +1,9 @@
 {
   "@@locale": "en",
+  "aed": "AED",
+  "maxQuantityAdded": "Max quantity added",
+  "reviews": "Reviews",
+  "products": "Products",
   "language": "Language",
   "english": "English",
   "arabic": "Arabic",

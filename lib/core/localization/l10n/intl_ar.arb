@@ -1,5 +1,9 @@
 {
   "@@locale": "ar",
+  "aed": "د.إ",
+  "maxQuantityAdded": "تم إضافة الحد الأقصى للكمية",
+  "reviews": "التقييمات",
+  "products": "المنتجات",
   "language": "اللغة",
   "english": "الإنجليزية",
   "arabic": "العربية",

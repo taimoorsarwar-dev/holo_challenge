@@ -1,5 +1,25 @@
 {
-  "@@last_modified": "2025-08-17T20:32:30.102486",
+  "@@last_modified": "2025-08-18T15:42:21.487948",
+  "aed": "AED",
+  "@aed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "maxQuantityAdded": "Max quantity added",
+  "@maxQuantityAdded": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "reviews": "Reviews",
+  "@reviews": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "products": "Products",
+  "@products": {
+    "type": "text",
+    "placeholders": {}
+  },
   "language": "Language",
   "@language": {
     "type": "text",

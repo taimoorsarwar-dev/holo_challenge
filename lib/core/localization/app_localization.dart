@@ -24,6 +24,22 @@ class AppLocalizations {
     return _localization;
   }
 
+  String get aed {
+    return Intl.message("AED", name: 'aed');
+  }
+
+  String get maxQuantityAdded {
+    return Intl.message("Max quantity added", name: 'maxQuantityAdded');
+  }
+
+  String get reviews {
+    return Intl.message("Reviews", name: 'reviews');
+  }
+
+  String get products {
+    return Intl.message("Products", name: 'products');
+  }
+
   String get language {
     return Intl.message("Language", name: 'language');
   }

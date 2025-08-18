@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static Map<String, dynamic> _notInlinedMessages(_) => {
       'addToCart': MessageLookupByLibrary.simpleMessage('Add To Cart'),
+    'aed': MessageLookupByLibrary.simpleMessage('AED'),
     'arabic': MessageLookupByLibrary.simpleMessage('Arabic'),
     'cancel': MessageLookupByLibrary.simpleMessage('Cancel'),
     'cartTotal': MessageLookupByLibrary.simpleMessage('Cart Total'),
@@ -42,9 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
     'items': MessageLookupByLibrary.simpleMessage('Items'),
     'language': MessageLookupByLibrary.simpleMessage('Language'),
     'light': MessageLookupByLibrary.simpleMessage('Light'),
+    'maxQuantityAdded': MessageLookupByLibrary.simpleMessage('Max quantity added'),
     'noInternetConnection': MessageLookupByLibrary.simpleMessage('No internet connection. Please check your network and try again.'),
     'paymentSummary': MessageLookupByLibrary.simpleMessage('Payment Summary'),
     'preferences': MessageLookupByLibrary.simpleMessage('Preferences'),
+    'products': MessageLookupByLibrary.simpleMessage('Products'),
+    'reviews': MessageLookupByLibrary.simpleMessage('Reviews'),
     'serverTakingLongRespond': MessageLookupByLibrary.simpleMessage('The server is taking too long to respond. Please try again later.'),
     'settings': MessageLookupByLibrary.simpleMessage('Settings'),
     'shoppingCart': MessageLookupByLibrary.simpleMessage('Your Cart'),
