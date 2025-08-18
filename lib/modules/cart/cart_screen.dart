@@ -134,7 +134,7 @@ class _CartScreenState extends BaseState<CartScreen>
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.all(UIHelper.mediumPadding),
+                        padding: const EdgeInsets.all(UIHelper.largePadding),
                         child: Column(
                           children: [
                             _getProductsListWidget(cartItems),

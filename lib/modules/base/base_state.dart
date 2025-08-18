@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:holo_challenge/core/app_router/navigator_service.dart';
+import 'package:holo_challenge/core/di/app_locator.dart';
 import 'package:holo_challenge/core/theme/app_responsive.dart';
 import 'package:holo_challenge/core/theme/app_text_styles.dart';
 import 'package:holo_challenge/core/theme/theme_palette.dart';
 import 'package:holo_challenge/core/theme/ui_helper.dart';
+import 'package:holo_challenge/modules/user/user_preferences_bloc.dart';
 import 'package:holo_challenge/r.dart';
 import 'package:holo_challenge/widgets/buttons/custom_icon_button.dart';
 import 'package:holo_challenge/widgets/image/multi_source_image.dart';
@@ -87,16 +89,23 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
     if (isBackNeeded == true) {
       leadingWidget = Container(
         margin: const EdgeInsets.only(
-          left: UIHelper.smallPadding,
-          right: UIHelper.spaceEight,
+          // left: UIHelper.smallPadding,
+          // right: UIHelper.spaceEight,
         ),
         child: getBackButton(color: appBarTextColor),
       );
     } else if (leadingWidget != null) {
       leadingWidget = Container(
-        margin: const EdgeInsets.only(
-          left: UIHelper.largePadding,
-          right: UIHelper.smallPadding,
+        margin: EdgeInsets.only(
+          // left: UIHelper.largePadding,
+          right:
+              locator<UserPreferencesBloc>().isLanguageDirectionLtr()
+                  ? UIHelper.smallPadding
+                  : 0,
+          left:
+              !locator<UserPreferencesBloc>().isLanguageDirectionLtr()
+                  ? UIHelper.smallPadding
+                  : 0,
         ),
         child: leadingWidget,
       );
@@ -117,7 +126,15 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
           child: Container(
             height: AppResponsive.isDeviceTablet ? 66 : kToolbarHeight,
             color: backgroundColor,
-            margin: const EdgeInsets.only(right: UIHelper.extraSmallPadding),
+            margin:
+                isBackNeeded
+                    ? const EdgeInsets.only(
+                      left: UIHelper.extraSmallPadding,
+                      right: UIHelper.largePadding,
+                    )
+                    : const EdgeInsets.symmetric(
+                      horizontal: UIHelper.largePadding,
+                    ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

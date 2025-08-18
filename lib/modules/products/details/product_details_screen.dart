@@ -205,7 +205,7 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
     bool needLeftMargin = false,
   }) {
     return Container(
-      margin: EdgeInsets.only(right: UIHelper.mediumPadding),
+      // margin: EdgeInsets.only(right: UIHelper.mediumPadding),
       child: CustomIconButton(
         icon: icon,
         isCircular: true,

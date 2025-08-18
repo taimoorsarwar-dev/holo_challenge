@@ -92,7 +92,7 @@ class UserPreferencesBloc extends BlocBase {
     return _userPreferences.currency;
   }
 
-  bool getLanguageDirection() {
+  bool isLanguageDirectionLtr() {
     return _userPreferences.isLanguageDirectionLtr;
   }
 }
