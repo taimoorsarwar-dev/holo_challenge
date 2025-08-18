@@ -75,9 +75,7 @@ This application integrates with the FakeStore API (https://fakestoreapi.com) wi
 - **Authentication**: Login/Signup not implemented due to FakeStore API user data inconsistencies
 - **Server-side Cart**: Using local cart persistence instead of API-based cart due to API limitations
 
-
-===============================================
-
+### Dev notes
 
 - To Update splash screen run
   dart run flutter_native_splash:create
