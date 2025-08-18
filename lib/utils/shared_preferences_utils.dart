@@ -94,7 +94,7 @@ class SharedPreferencesUtils {
     return null;
   }
 
-  /// Get an integer value
+  /// Get a integer value
   static Future<int?> getInt({required String key}) async {
     try {
       final prefs = await _getInstance();
@@ -105,7 +105,7 @@ class SharedPreferencesUtils {
     return null;
   }
 
-  /// Get an double value
+  /// Get a double value
   static Future<double?> getDouble({required String key}) async {
     try {
       final prefs = await _getInstance();
@@ -116,7 +116,7 @@ class SharedPreferencesUtils {
     return null;
   }
 
-  /// Get an boolean value
+  /// Get a boolean value
   static Future<bool?> getBool({required String key}) async {
     try {
       final prefs = await _getInstance();
@@ -127,7 +127,7 @@ class SharedPreferencesUtils {
     return null;
   }
 
-  /// Get an String value
+  /// Get a String value
   static Future<String?> getString({required String key}) async {
     try {
       final prefs = await _getInstance();
@@ -138,7 +138,7 @@ class SharedPreferencesUtils {
     return null;
   }
 
-  /// Get an List<String> value
+  /// Get a List of String values
   static Future<List<String>?> getStringList({required String key}) async {
     try {
       final prefs = await _getInstance();
@@ -149,7 +149,7 @@ class SharedPreferencesUtils {
     return null;
   }
 
-  /// Get an Map Object value
+  /// Get a Map Object value
   static Future<dynamic> getObject({required String key}) async {
     try {
       final prefs = await _getInstance();

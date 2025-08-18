@@ -81,7 +81,7 @@ class CustomIconButton extends StatelessWidget {
             : isSelected
             ? ThemePalette.accentColor
             : ThemePalette.cellBackgroundColor);
-    Color _borderColor = borderColor ?? ThemePalette.borderColor;
+    Color borderColor0 = borderColor ?? ThemePalette.borderColor;
     if (icon != null && icon.isNotEmpty) {
       return Stack(
         clipBehavior: Clip.none,
@@ -105,7 +105,7 @@ class CustomIconButton extends StatelessWidget {
                 ),
                 side:
                     showBorder
-                        ? BorderSide(color: _borderColor)
+                        ? BorderSide(color: borderColor0)
                         : BorderSide.none,
               ),
             ),

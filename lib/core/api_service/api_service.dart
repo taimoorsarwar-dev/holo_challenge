@@ -106,8 +106,9 @@ class ApiService {
     Function(Map<String, dynamic>)? fromJson,
     bool showSuccessMessage = false,
   }) {
-    if (response.body.isEmpty)
+    if (response.body.isEmpty) {
       return true; // For empty responses (e.g., DELETE)
+    }
 
     final body = jsonDecode(response.body);
 

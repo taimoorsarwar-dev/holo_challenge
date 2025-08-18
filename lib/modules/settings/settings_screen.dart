@@ -29,11 +29,6 @@ class SettingsScreenState extends BaseState<SettingsScreen> {
   SettingsBloc? _settingsBloc;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     createBloc();
     super.didChangeDependencies();

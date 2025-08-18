@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:holo_challenge/core/theme/ui_theme.dart';
 import 'package:holo_challenge/r.dart';
 import 'package:holo_challenge/widgets/image/multi_source_image.dart';
 
-import '../../core/theme/ui_theme.dart';
 import 'custom_icon_button.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
@@ -91,7 +91,7 @@ class CustomOutlinedButton extends StatelessWidget {
         (isFilled && isSelected
             ? ThemePalette.accentColor
             : ThemePalette.cellBackgroundColor);
-    Color _borderColor =
+    Color borderColor0 =
         isSelected
             ? ThemePalette.accentColor
             : borderColor ?? ThemePalette.borderColor;
@@ -109,7 +109,7 @@ class CustomOutlinedButton extends StatelessWidget {
         onPressed: onTap,
         style: OutlinedButton.styleFrom(
           backgroundColor: backgroundColor,
-          side: BorderSide(color: _borderColor),
+          side: BorderSide(color: borderColor0),
           foregroundColor: ThemePalette.splashColor,
           minimumSize: Size(height, height),
           padding:

@@ -98,7 +98,7 @@ class PrimaryButton extends StatelessWidget {
             ? ThemePalette.primaryText
             : ThemePalette.selectedTextColor;
     backgroundColor ??= ThemePalette.accentColor;
-    Color _borderColor = borderColor ?? ThemePalette.inActiveBgColor;
+    Color borderColor0 = borderColor ?? ThemePalette.inActiveBgColor;
     BorderRadius borderRadius = UIHelper.getBorderRadius(radius: radius);
 
     return MaterialButton(
@@ -113,7 +113,7 @@ class PrimaryButton extends StatelessWidget {
       textColor: textColor,
       padding: padding ?? EdgeInsets.zero,
       shape: RoundedRectangleBorder(
-        side: isOutlined ? BorderSide(color: _borderColor) : BorderSide.none,
+        side: isOutlined ? BorderSide(color: borderColor0) : BorderSide.none,
         borderRadius: borderRadius,
       ),
       child: Row(

@@ -21,7 +21,6 @@ class Palette {
   static const iconsColor = Color(0xFF8A8A8A);
   static const selectedBottomNavBarColor = Color(0xFFFFFFFF);
   static const unSelectedColor = Color(0xFFE0E0E0);
-  static Color newHintText = Colors.white.withOpacity(0.4);
   static const newLightHintText = Color(0xFFC7C7C7);
   static const darkPrimaryText = Color(0xFF0D3DA4);
 

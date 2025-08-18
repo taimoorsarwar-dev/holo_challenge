@@ -11,14 +11,8 @@ class _ToastConfig {
   final Color? backgroundColor;
   final Color? textColor;
   final String? iconAsset;
-  final bool hasIconCircle;
 
-  const _ToastConfig({
-    this.backgroundColor,
-    this.textColor,
-    this.iconAsset,
-    this.hasIconCircle = false,
-  });
+  const _ToastConfig({this.backgroundColor, this.textColor, this.iconAsset});
 }
 
 class CustomToast {
@@ -134,24 +128,8 @@ class _ToastWidget extends StatelessWidget {
     final double iconSize = 24.0;
     Widget icon = MultiSourceImage(
       url: config.iconAsset ?? R.assetsImagesIconsCancel,
-      iconColor:
-          config.hasIconCircle
-              ? ThemePalette.cellBackgroundColor
-              : config.textColor,
+      iconColor: config.textColor,
     );
-
-    if (config.hasIconCircle) {
-      return Container(
-        height: iconSize,
-        width: iconSize,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: ThemePalette.accentColor,
-        ),
-        padding: const EdgeInsets.all(3),
-        child: icon,
-      );
-    }
 
     return SizedBox(height: iconSize, width: iconSize, child: icon);
   }
