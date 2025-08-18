@@ -37,11 +37,4 @@ class ProductDetailsBloc extends BlocBase {
       }
     }
   }
-
-  // void navigateToProductDetailsScreen() {
-  //   NavigatorService.pushNamed(
-  //     RouteNames.productDetails,
-  //     arguments: ProductDetailsScreenParams(-1, false),
-  //   );
-  // }
 }

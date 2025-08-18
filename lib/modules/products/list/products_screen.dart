@@ -68,7 +68,7 @@ class _ProductsScreenState extends BaseState<ProductsScreen>
     return Scaffold(
       body: BlocProvider<ProductBloc>(
         bloc: _productBloc,
-        child: Stack(children: <Widget>[_getBaseContainer()]),
+        child: _getBaseContainer(),
       ),
       backgroundColor: ThemePalette.backgroundColor,
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:holo_challenge/core/app_router/navigator_service.dart';
 import 'package:holo_challenge/core/di/app_locator.dart';
+import 'package:holo_challenge/core/localization/app_localization.dart';
 import 'package:holo_challenge/core/theme/ui_theme.dart';
 import 'package:holo_challenge/modules/base/base_bloc.dart';
 import 'package:holo_challenge/modules/base/base_state.dart';
@@ -81,7 +82,7 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
     return Scaffold(
       body: BlocProvider<ProductDetailsBloc>(
         bloc: _productBloc,
-        child: Stack(children: <Widget>[_getBaseContainer()]),
+        child: _getBaseContainer(),
       ),
       backgroundColor: ThemePalette.backgroundColor,
     );
@@ -98,37 +99,24 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
         return SafeArea(
           child: Column(
             children: [
-              getAppBarWidget(
-                backgroundColor: ThemePalette.backgroundColor,
-                leadingWidget: getCustomBackButton(
-                  icon: R.assetsImagesIconsArrowLeft,
-                  needLeftMargin: true,
-                  onPressed: () => backIsPressed(),
-                ),
-              ),
+              _getAppBarWidget(),
               Expanded(child: _getBody(productModel: productModel)),
-              Container(
-                padding: EdgeInsets.fromLTRB(
-                  UIHelper.mediumPadding,
-                  UIHelper.mediumPadding,
-                  UIHelper.mediumPadding,
-                  0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _getPriceWidget(
-                      model: productModel,
-                      removeBottomPadding: true,
-                    ),
-                    _getAddToCartButton(model: productModel),
-                  ],
-                ),
-              ),
+              _getStickyButtonWidget(productModel: productModel),
             ],
           ),
         );
       },
+    );
+  }
+
+  Widget _getAppBarWidget() {
+    return getAppBarWidget(
+      backgroundColor: ThemePalette.backgroundColor,
+      leadingWidget: getCustomBackButton(
+        icon: R.assetsImagesIconsArrowLeft,
+        needLeftMargin: true,
+        onPressed: () => backIsPressed(),
+      ),
     );
   }
 
@@ -253,7 +241,7 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
             _starRatingWidget(rating: double.parse(category)),
             if (totalCount != null && totalCount.isNotEmpty)
               Text(
-                "($totalCount Reviews)",
+                "($totalCount ${AppLocalizations.getLocalization().reviews})",
                 style: AppTextStyle.getMediumTextStyle(
                   false,
                   ThemePalette.secondaryText,
@@ -345,5 +333,23 @@ class _ProductDetailsScreenState extends BaseState<ProductDetailsScreen>
     }
 
     return const SizedBox();
+  }
+
+  Widget _getStickyButtonWidget({ProductModel? productModel}) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(
+        UIHelper.mediumPadding,
+        UIHelper.mediumPadding,
+        UIHelper.mediumPadding,
+        0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _getPriceWidget(model: productModel, removeBottomPadding: true),
+          _getAddToCartButton(model: productModel),
+        ],
+      ),
+    );
   }
 }
