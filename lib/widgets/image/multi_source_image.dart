@@ -90,7 +90,7 @@ class MultiSourceImage extends StatelessWidget {
                   url,
                   width: size,
                   height: size,
-                  color: color,
+                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
                 );
         return svgImage;
       } else if (isUrl && !isImageSvg) {
